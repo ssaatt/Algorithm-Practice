@@ -1,4 +1,10 @@
 /*
+input: text
+output: 输出单词和频率,tab隔开,每个单词一行,按字母顺序排列
+ 
+*/
+
+/*
 For Question 1:
 
 Corner cases: 
@@ -8,30 +14,21 @@ Corner cases:
 4. words with hyphen(T-shirt, do-it-yourself....) ( a little unsure about this case, is "do-it-yourself" one word or three words?) 
 5. abbreviations (e.g. , i.e. ....)
 
-
-
-
 Thoughts:
 1.Use a tree map<String, Integer> to hold the final result 
 2.Process the file line by line. For each word
 1)if it does not exist in Map, add it to the map and set its frequency to 1. 
 2)if it already exists in Map, add one to its frequency. 
 
-
-
 Time Complexity: 
 O(nlgn)--n is the total number of words in the inputstream
 For tree map, the average operation time is O(lgn), so total time is O(nlgn)
-
 
 Space Complexity:
 Extra Structure needed: O(k)-- k is the number of unique words in the inputstream
 A tree map to keep the words and their frequencies. 
 
-
-
 */
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
