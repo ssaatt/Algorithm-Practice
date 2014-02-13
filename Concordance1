@@ -1,0 +1,87 @@
+/*
+Input is a text.  
+Output should be a list of words and their frequency, separated by tab, with each on a new line, in alphabetical order.
+*/
+
+/*
+Thoughts about this problem: 
+
+For Question 1:
+
+
+
+
+
+
+
+*/
+
+
+
+
+
+
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
+import java.util.regex.Pattern;
+import java.io.InputStreamReader;
+
+            public  class Solution {
+                public static final Pattern SPLIT = Pattern.compile("[^((A-Za-z0-9')|([-']))]");
+            	
+            	
+                public static void main(String[] args) {
+                    try{
+                        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                    	//BufferedReader br = Files.newBufferedReader(Paths.get("./text.txt"), StandardCharsets.UTF_8);   
+                    	Map<String, Integer> wordFreq = new TreeMap<>();
+                        String line;
+                      
+                        while ((line = br.readLine()) != null) {
+                            if (!line.isEmpty()) {    
+                            	
+                           	String[] sentences = SPLIT.split(line);
+                                    List<String> loweredWords = lower(sentences);
+                                    wordFreq = countFreq(loweredWords, wordFreq);
+                            }
+                        }
+                        Set<String> words = wordFreq.keySet();
+                        for(String word:words){
+                        	System.out.println(word+"\t"+wordFreq.get(word));
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+                
+                public static List<String> lower(String[] rawWords) {
+
+                	List<String> loweredWords = new ArrayList<>(rawWords.length);
+                    for (String word : rawWords) {
+                        
+                            word =word.toLowerCase();
+                            if (!word.isEmpty()) { // eliminate fake "words", e.g. hyphens
+                            loweredWords.add(word);
+                        }
+                    }
+                    return loweredWords;
+                }
+
+                public static Map<String, Integer> countFreq(List<String> loweredWords,
+                                                                       Map<String, Integer> wordFrequency) {
+                    for (String word : loweredWords) {
+                        if (wordFrequency.get(word) != null) {
+                            wordFrequency.put(word, 1 + wordFrequency.get(word));
+                        } else {
+                            wordFrequency.put(word, 1);
+                        }
+                    }
+                    return wordFrequency;
+                }
+            }
