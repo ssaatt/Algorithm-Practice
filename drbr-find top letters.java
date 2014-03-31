@@ -1,13 +1,3 @@
-/*
-面试时间: 6: 03-6:47
-Share Google Doc: 6:10.
-Clear Questions (input & output) : 6:10-6:18/6:20
-Time for coding:6:20-6:42
-
-问题: 
-1. 不需要sort, 时间复杂了, 只要keep max就好. 而且在加入的时候就能keep max, 不用one pass. 
-2. 这么几行, 写这么久!!!!
-*/
 
 
 /*
